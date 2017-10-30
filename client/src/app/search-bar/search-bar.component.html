@@ -1,0 +1,59 @@
+<div id="search">
+  <button type="button" class="close">×</button>
+  <form *ngIf="!records">
+    <select #selectedOption class="search-select">
+      <option disabled=true value="">Select an Option</option>
+      <option *ngFor="let option of options" [value]="option.name">{{option.display}}</option>
+    </select>
+    <input [(ngModel)]="input" name="input" type="search" placeholder="type keyword(s) here" />
+    <button (click)="search(selectedOption.value)" type="submit" class="btn btn-submit"><i id="send" class="fa fa-paper-plane"></i></button>
+    <div class="has-error search-error text-center">
+      <span class="help-block text-center">
+        {{errors}}
+      </span>
+    </div>
+  </form>
+  <button *ngIf="records" (click)="hideRecords()" class="btn-circle"><i class="glyphicon glyphicon-chevron-left"></i></button>
+  <div id="records" *ngIf="records">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>CustKey</th>
+          <th>Phone 1</th>
+          <th>Phone 2</th>
+          <th>Title</th>
+          <th>First Name</th>
+          <th>Last Name</th>
+          <th>Gender</th>
+          <th>Address 1</th>
+          <th>Suburb</th>
+          <th>State</th>
+          <th>Postcode</th>
+          <th>Mobile Phone</th>
+          <th>Home Phone</th>
+          <th>Source</th>
+          <th>Site Label</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let record of records">
+          <td>{{record.custkey}}</td>
+          <td>{{record.phone1}}</td>
+          <td>{{record.phone2}}</td>
+          <td>{{record.title}}</td>
+          <td>{{record.firstname}}</td>
+          <td>{{record.lastname}}</td>
+          <td>{{record.gender}}</td>
+          <td>{{record.address1}}</td>
+          <td>{{record.suburb}}</td>
+          <td>{{record.state}}</td>
+          <td>{{record.postcode}}</td>
+          <td>{{record.mobilephone}}</td>
+          <td>{{record.homephone}}</td>
+          <td>{{record.source}}</td>
+          <td>{{record.sitelabel}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

@@ -1,0 +1,26 @@
+{
+  "name": "api-service",
+  "version": "1.0.0",
+  "description": "Allows for receiving and transforming data",
+  "main": "server/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ways-phone/api-service.git"
+  },
+  "keywords": [
+    "API",
+    "javascript",
+    "ES2015",
+    "Angular",
+    "Express"
+  ],
+  "author": "Miles J W Johnson",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ways-phone/api-service/issues"
+  },
+  "homepage": "https://github.com/ways-phone/api-service#readme"
+}

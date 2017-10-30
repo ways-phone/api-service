@@ -1,0 +1,8 @@
+// Place your settings in this file to overwrite default and user settings.
+{
+    "prettier.bracketSpacing": true,
+    "prettier.singleQuote": true,
+    "prettier.eslintIntegration": true,
+    
+    "editor.formatOnSave": true
+}

@@ -1,0 +1,1155 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.css" rel="stylesheet" type='text/css'>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <!-- <link rel="stylesheet" href="/js/bootstrap/css/bootstrap.min.css"> -->
+    <link rel="stylesheet" href="css/sidebar.css">
+    <link rel="stylesheet" href="css/scrolling-nav.css">
+
+
+    <link rel="shortcut icon" type="image/x-icon" href="/img/favicon.ico" />
+    <title>WAYS Phone API</title>
+</head>
+
+<body id="page-top" data-spy="scroll" data-target=".sidebar">
+
+
+
+    <nav class="navbar navbar-default sidebar" role="navigation" id="mainNav">
+        <div class="container-fluid">
+            <div class="navbar-header page-scroll">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-sidebar-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+            <div class="collapse navbar-collapse navbar-ex1-collapse" id="bs-sidebar-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+
+                    <li class="active">
+                        <a class="page-scroll" href="/">Home
+                            <span style="font-size:16px;" class="pull-right hidden-xs showopacity fa fa-home"></span>
+                        </a>
+                    </li>
+
+                    <li class="hidden">
+                        <a class="page-scroll" href="#page-top"></a>
+                    </li>
+
+                    <li class="dropdown" id="auth">
+                        <a class="dropdown-toggle" data-toggle="dropdown">Authentication
+                            <span class="caret"></span>
+                             <i style="font-size:16px;"  class=" pull-right hidden-xs showopacity fa fa-key" aria-hidden="true"></i>
+                        </a>
+                        <ul class="dropdown-menu auth forAnimate" role="menu">
+                            <li>
+                                <a class="page-scroll" href="#login">POST api/auth/login</a>
+                            </li>
+                            <li>
+                                <a class="page-scroll" href="#change-password">POST api/auth/change-password</a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li class="dropdown" id="users">
+                        <a class="dropdown-toggle" data-toggle="dropdown">Users
+                            <span class="caret"></span>
+                             <i style="font-size:16px;"  class=" pull-right hidden-xs showopacity fa fa-users" aria-hidden="true"></i>
+                        </a>
+                        <ul class="dropdown-menu users forAnimate" role="menu">
+                            <li>
+                                <a class="page-scroll" href="#get">GET api/users</a>
+                            </li>
+                            <li>
+                                <a class="page-scroll" href="#create">POST api/users</a>
+                            </li>
+                            <li>
+                                <a class="page-scroll" href="#me">GET api/users/me</a>
+                            </li>
+                            <li>
+                                <a class="page-scroll" href="#username">GET api/users/:username</a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li class="dropdown" id="clients">
+                        <a class="dropdown-toggle" data-toggle="dropdown">Clients
+                            <span class="caret"></span>
+                             <i style="font-size:16px;"  class=" pull-right hidden-xs showopacity fa fa-cube" aria-hidden="true"></i>
+                        </a>
+                        <ul class="dropdown-menu clients forAnimate" role="menu">
+                            <li>
+                                <a class="page-scroll" href="#get-clients">GET api/clients</a>
+                            </li>
+                            <li>
+                                <a class="page-scroll" href="#create-client">POST api/clients</a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li class="dropdown" id="campaigns">
+                        <a class="dropdown-toggle" data-toggle="dropdown">Campaigns
+                            <span class="caret"></span>
+                             <i style="font-size:16px;"  class=" pull-right hidden-xs showopacity fa fa-cubes" aria-hidden="true"></i>
+                        </a>
+                        <ul class="dropdown-menu campaigns forAnimate" role="menu">
+                            <li>
+                                <a class="page-scroll" href="#get-campaigns">GET api/clients/:client</a>
+                            </li>
+                            <li>
+                                <a class="page-scroll" href="#create-campaign">POST api/clients/:client</a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li class="dropdown" id="sources">
+                        <a class="dropdown-toggle" data-toggle="dropdown">Sources
+                            <span class="caret"></span>
+                             <i style="font-size:16px;"  class=" pull-right hidden-xs showopacity fa fa-tags" aria-hidden="true"></i>
+                        </a>
+                        <ul class="dropdown-menu sources forAnimate" role="menu">
+                            <li>
+                                <a class="page-scroll" href="#get-sources">GET api/clients/:client/:campaign</a>
+                            </li>
+                            <li>
+                                <a class="page-scroll" href="#create-source">POST api/clients/:client/source</a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li class="dropdown" id="records">
+                        <a class="dropdown-toggle" data-toggle="dropdown">Records
+                            <span class="caret"></span>
+                             <i style="font-size:16px;"  class=" pull-right hidden-xs showopacity fa fa-suitcase" aria-hidden="true"></i>
+                        </a>
+                        <ul class="dropdown-menu records forAnimate" role="menu">
+                            <li>
+                                <a class="page-scroll" href="#get-records">GET api/clients/:client/:campaign/records</a>
+                            </li>
+                            <li>
+                                <a class="page-scroll" href="#search-records">POST api/clients/:client/:campaign/search</a>
+                            </li>
+                            <li>
+                                <a class="page-scroll" href="#push-record">POST api/clients/:client/:campaign</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+
+            </div>
+        </div>
+    </nav>
+    <div class="container-fluid main-body">
+        <!-- Intro Section -->
+        <section id="intro" class="intro-section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-10 mx-auto col-lg-offset-1">
+                        <h2 class="text-center wide">WAYS Phone API Documentation</h2>
+                        <p class="lead">Welcome to the WAYS Phone API Documentation. The following sections describe the various endpoints
+                            available for use. Please note that some routes may only be accessed by WAYS Phone Staff, and
+                            as such will not be accessible by all users.
+                        </p>
+                        <p class="lead">This service's main goal is to provide a conduit been data providers and the WAYS Phone Dialer. As
+                            such a core set of schema is defined later in this document and should be followed as closely
+                            as possible. This allows for the validation and formatting of all received records with regards
+                            to fields such as phone numbers and addresses. Additional fields are permitted in the data transfer,
+                            however any extra fields will not be utilized by the WAYS Phone Dialer.
+                        </p>
+                        <p class="lead">
+                            In order to push records, a <strong>client</strong> and <strong>campaign</strong> must first
+                            be established, with the endpoint URL changing depending upon these fields. Clients and campaigns
+                            can only be created by WAYS Phone staff.
+
+                        </p>
+                        <p class="lead">
+                            As an example, a cold calling campaign for Greenpeace would have its route set as:
+
+                        </p>
+                        <p class="lead">
+                            <code>api/clients/Greenpeace/Lead_Conversion </code>
+                        </p>
+                        <p class="lead">
+                            with Greenpeace being the <strong>client</strong> and Lead Conversion the <strong>campaign</strong>
+                        </p>
+                        <p class="lead">
+                            Similarly, a cold calling campaign for the client Medecins Sans Frontieres would have its route set as:
+                        </p>
+                        <p class="lead">
+                            <code>api/clients/MSF/Online</code>
+                        </p>
+                        <p class="lead">
+                            with MSF being the client and Online as the campaign
+                        </p>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- AUTHENTICATION Section -->
+        <section class="about-section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-10 mx-auto col-lg-offset-1">
+                        <div class="col-lg-12 col-md-12 col-sm-12">
+                            <h2 class="wide">Authentication</h2>
+                        </div>
+
+                        <hr/>
+                        <div id="login" class="row">
+                            <div class="col-lg-12 col-md-12 col-sm-12">
+                                <h3 class="sub-title">POST api/auth/login</h3>
+                            </div>
+                            <div class="col-lg-12 col-md-12 col-sm-12">
+                                <h4 class="sub-title">
+                                    Description
+                                </h4>
+                                <p class="text-body">
+                                    This is the route that Users use to login to the API server. Users will POST their login details and receive a JSON Web Token
+                                    in the response. This token must be set in the Authorization field in the HTTP Header
+                                    on subsequent requests
+                                </p>
+                            </div>
+                            <div class="col-lg-12 col-md-12 col-sm-12">
+                                <h4 class="sub-title">
+                                    Parameters
+                                </h4>
+                                <p class="text-body">
+                                    <strong>Email: </strong>unique email of the selected user
+                                </p>
+                                <p class="text-body">
+                                    <strong>Password: </strong>Minimum 12 letter passwords containing at least 1 number
+                                </p>
+                            </div>
+                            <div class="col-lg-12 col-md-12 col-sm-12">
+                                <h4 class="sub-title">
+                                    Example JSON Body
+                                </h4>
+
+                                <pre>
+                                    <code>
+{
+    “email”:”miles@waysphone.com”,
+    “password:”thisisalongpassword1”
+}
+                                    </code>
+                                </pre>
+
+                            </div>
+                            <div class="col-lg-12 col-md-12 col-sm-12">
+                                <h4 class="sub-title">
+                                    Response
+                                </h4>
+                                <p class="text-body">
+                                    <pre>
+                        <code>
+{
+    “token”:”eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1OTdjODZkMmJlZjkwZDNiYTE4OWZkMTYiLCJpYXQiOjE1MDE1MTkwNDMsImV4cCI6MTUwMTYwNTQ0M30.v8YTKxz0LqDAesID4l6-zIyrhllWR7UovW9590hyruo”
+}
+                       </code>
+                       </pre>
+                                </p>
+                            </div>
+                        </div>
+                        <hr/>
+                        <div id="change-password" class="row">
+                            <div class="col-lg-12 col-md-12 col-sm-12">
+                                <h3 class="sub-title">POST api/auth/change-password</h3>
+                            </div>
+                            <div class="col-lg-12 col-md-12 col-sm-12">
+                                <h4 class="sub-title">
+                                    Description
+                                </h4>
+                                <p class="text-body">
+                                    This is the route that Users use to change their password. Users will POST their old password and their new password. If
+                                    the Password update is successful and success message will be returned.
+                                </p>
+                            </div>
+                            <div class="col-lg-12 col-md-12 col-sm-12">
+                                <h4 class="sub-title">
+                                    Parameters
+                                </h4>
+                                <p class="text-body">
+                                    <strong>Old Password: </strong>The current password of the user.
+                                </p>
+                                <p class="text-body">
+                                    <strong>New Password: </strong>The new password.
+                                </p>
+                            </div>
+                            <div class="col-lg-12 col-md-12 col-sm-12">
+                                <h4 class="sub-title">
+                                    Example JSON Body
+                                </h4>
+                                <p class="text-body">
+                                    <pre>
+                        <code>
+{
+    “oldpassword:”thisisalongpassword1”,
+    “newpassword:”thisisachangedlongpassword1”
+}
+                       </code>
+                        </pre>
+                                </p>
+                            </div>
+                            <div class="col-lg-12 col-md-12 col-sm-12">
+                                <h4 class="sub-title">
+                                    Response
+                                </h4>
+                                <p class="text-body">
+                                    <pre>
+                        <code>
+{
+    “message”: ”Password updated successfully”
+}
+                       </code>
+                        </pre>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </section>
+
+        <!-- USERS Section -->
+        <section class="intro-section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-10 mx-auto col-lg-offset-1">
+                        <div class="col-lg-12 col-md-12 col-sm-12">
+                            <h2 class="wide">Users </h2>
+                        </div>
+
+                        <hr/>
+                        <div id="get" class="row">
+                            <div class="col-lg-12 col-md-12 col-sm-12">
+                                <h3 class="sub-title">GET api/users</h3>
+                            </div>
+                            <div class="col-lg-12 col-md-12 col-sm-12">
+                                <h4 class="sub-title">
+                                    Description
+                                </h4>
+                                <p class="text-body">
+                                    For a GET request this endpoint will return all created users in the database. This endpoint is only accessible by WAYS Phone
+                                    staff
+                                </p>
+                            </div>
+                            <div class="col-lg-12 col-md-12 col-sm-12">
+                                <h4 class="sub-title">
+                                    Response
+                                </h4>
+                                <p class="text-body">
+                                    <pre>
+                        <code>
+[
+    {
+    &quot;updatedAt&quot;: &quot;2017-07- 29T11:51:43.242Z&quot;,
+    &quot;createdAt&quot;: &quot;2017-07- 29T11:51:43.242Z&quot;,
+    &quot;username&quot;: &quot;miles&quot;,
+    &quot;firstname&quot;: &quot;Miles&quot;,
+    &quot;lastname&quot;: &quot;Johnson&quot;,
+    &quot;email&quot;: &quot;miles@example.com&quot;,
+    &quot;role&quot;: &quot;admin&quot;,
+    &quot;id&quot;: &quot;597c76cfcb5ef928e2bf73c7&quot;
+    },
+    {
+
+    &quot;updatedAt&quot;: &quot;2017-07- 29T13:00:02.662Z&quot;,
+    &quot;createdAt&quot;: &quot;2017-07- 29T13:00:02.662Z&quot;,
+    &quot;username&quot;: &quot;lora&quot;,
+    &quot;firstname&quot;: &quot;Lora&quot;,
+    &quot;lastname&quot;: &quot;Stockley&quot;,
+    &quot;email&quot;: &quot;lora@example.com&quot;,
+    &quot;role&quot;: &quot;client&quot;,
+    &quot;id&quot;: &quot;597c86d2bef90d3ba189fd16&quot;
+    }
+]
+                       </code>
+                        </pre>
+                                </p>
+                            </div>
+                        </div>
+                        <hr/>
+                        <div id="create" class="row">
+                            <div class="col-lg-12 col-md-12 col-sm-12">
+                                <h3 class="sub-title">POST api/users</h3>
+                            </div>
+                            <div class="col-lg-12 col-md-12 col-sm-12">
+                                <h4 class="sub-title">
+                                    Description
+                                </h4>
+                                <p class="text-body">
+                                    This API endpoint is used to create a new user. This is the only unauthenticated endpoint. This will return the generated
+                                    JSON Web Token to be used for further request.
+                                </p>
+                            </div>
+                            <div class="col-lg-12 col-md-12 col-sm-12">
+                                <h4 class="sub-title">
+                                    Parameters
+                                </h4>
+                                <p class="text-body">
+                                    <strong>First Name: </strong>The first name of the user.
+                                </p>
+                                <p class="text-body">
+                                    <strong>Last Name: </strong>the last name of the user.
+                                </p>
+                                <p class="text-body">
+                                    <strong>Username*: </strong>the unique username
+                                </p>
+                                <p class="text-body">
+                                    <strong>Email* : </strong>the unique email.
+                                </p>
+                                <p class="text-body">
+                                    <strong>Password* : </strong>A minimum 12-character password with at least 1 number
+                                </p>
+                            </div>
+                            <div class="col-lg-12 col-md-12 col-sm-12">
+                                <h4 class="sub-title">
+                                    Example JSON Body
+                                </h4>
+                                <p class="text-body">
+                                    <pre>
+                        <code>
+{
+    &quot;username&quot;:&quot;miles2&quot;,
+    &quot;email&quot;:&quot;thisisanemail@email.com&quot;,
+    &quot;password&quot;:&quot;thisisapassword1&quot;
+}
+                       </code>
+                        </pre>
+                                </p>
+                            </div>
+                            <div class="col-lg-12 col-md-12 col-sm-12">
+                                <h4 class="sub-title">
+                                    Response
+                                </h4>
+                                <p class="text-body">
+                                    <pre>
+                        <code>
+{
+    &quot;token&quot;:&quot;eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1OTgwMDgxNDgyZGQ2YjY3MzQ0Z
+    GYxYWYiLCJpYXQiOjE1MDE1NjI5MDAsImV4cCI6MTUwMTY0OTMwMH0.ygcuuQJ46TF9K
+    9z0jGNboGRDOr7KNwjDz4ZjOtwuB60&quot;
+}
+                       </code>
+                        </pre>
+                                </p>
+                            </div>
+                        </div>
+                        <hr/>
+                        <div id="me" class="row">
+                            <div class="col-lg-12 col-md-12 col-sm-12">
+                                <h3 class="sub-title">GET api/users/me</h3>
+                            </div>
+                            <div class="col-lg-12 col-md-12 col-sm-12">
+                                <h4 class="sub-title">
+                                    Description
+                                </h4>
+                                <p class="text-body">
+                                    This endpoint returns the details of the currently logged in user
+                                </p>
+                            </div>
+                            <div class="col-lg-12 col-md-12 col-sm-12">
+                                <h4 class="sub-title">
+                                    Response
+                                </h4>
+                                <p class="text-body">
+                                    <pre>
+                        <code>
+{
+    &quot;updatedAt&quot;: &quot;2017-07- 29T11:51:43.242Z&quot;,
+    &quot;createdAt&quot;: &quot;2017-07- 29T11:51:43.242Z&quot;,
+    &quot;username&quot;: &quot;miles&quot;,
+    &quot;firstname&quot;: &quot;Miles&quot;,
+    &quot;lastname&quot;: &quot;Johnson&quot;,
+    &quot;email&quot;: &quot;miles@example.com&quot;,
+    &quot;role&quot;: &quot;admin&quot;,
+    &quot;id&quot;: &quot;597c76cfcb5ef928e2bf73c7&quot;
+}
+                       </code>
+                        </pre>
+                                </p>
+                            </div>
+                        </div>
+                        <hr/>
+                        <div id="username" class="row">
+                            <div class="col-lg-12 col-md-12 col-sm-12">
+                                <h3 class="sub-title">GET api/users/:username</h3>
+                            </div>
+                            <div class="col-lg-12 col-md-12 col-sm-12">
+                                <h4 class="sub-title">
+                                    Description
+                                </h4>
+                                <p class="text-body">
+                                    This endpoint can only be used by WAYS Phone staff, and returns the details of the user specified by the ‘:username’ section.
+                                </p>
+                            </div>
+                            <div class="col-lg-12 col-md-12 col-sm-12">
+                                <h4 class="sub-title">
+                                    Parameters
+                                </h4>
+                                <p class="text-body">
+                                    The username of the user whose details are being requested by be set at the ‘:username’ part of the route.
+                                </p>
+                            </div>
+                            <div class="col-lg-12 col-md-12 col-sm-12">
+                                <h4 class="sub-title">
+                                    Response
+                                </h4>
+                                <p class="text-body">
+                                    <pre>
+                        <code>
+{
+    &quot;updatedAt&quot;: &quot;2017-07- 29T11:51:43.242Z&quot;,
+    &quot;createdAt&quot;: &quot;2017-07- 29T11:51:43.242Z&quot;,
+
+    &quot;username&quot;: &quot;miles&quot;,
+    &quot;firstname&quot;: &quot;Miles&quot;,
+    &quot;lastname&quot;: &quot;Johnson&quot;,
+    &quot;email&quot;: &quot;miles@example.com&quot;,
+    &quot;role&quot;: &quot;admin&quot;,
+    &quot;id&quot;: &quot;597c76cfcb5ef928e2bf73c7&quot;
+}
+                       </code>
+                        </pre>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </section>
+
+        <section class="about-section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-10 mx-auto col-lg-offset-1">
+                        <div class="col-lg-12 col-md-12 col-sm-12">
+                            <h2 class="wide">Clients </h2>
+                        </div>
+
+                        <hr/>
+                        <div id="get-clients" class="row">
+                            <div class="col-lg-12 col-md-12 col-sm-12">
+                                <h3 class="sub-title">GET api/client</h3>
+                            </div>
+                            <div class="col-lg-12 col-md-12 col-sm-12">
+                                <h4 class="sub-title">
+                                    Description
+                                </h4>
+                                <p class="text-body">
+                                    This endpoint will return a list of all created clients
+                                </p>
+                            </div>
+                            <div class="col-lg-12 col-md-12 col-sm-12">
+                                <h4 class="sub-title">
+                                    Response
+                                </h4>
+                                <p class="text-body">
+                                    <pre>
+                        <code>
+[
+    {
+        &quot;path&quot;: &quot;MSF&quot;,
+        &quot;name&quot;: &quot;MSF&quot;,
+        &quot;creator&quot;: &quot;miles&quot;,
+        &quot;id&quot;: &quot;597f583975d2821864c13f26&quot;
+    },
+    {
+        &quot;path&quot;: &quot;GP&quot;,
+        &quot;name&quot;: &quot;GP&quot;,
+        &quot;creator&quot;: &quot;miles&quot;,
+        &quot;id&quot;: &quot;597f585475d2821864c13f27&quot;
+    },
+    {
+        &quot;path&quot;: &quot;Fred_Hollows&quot;,
+        &quot;name&quot;: &quot;Fred Hollows&quot;,
+        &quot;creator&quot;: &quot;miles&quot;,
+        &quot;id&quot;: &quot;597f5b3f7e38881cae74d0b1&quot;
+    },
+    {
+        &quot;path&quot;: &quot;The_Smith_Family&quot;,
+        &quot;name&quot;: &quot;The Smith Family&quot;,
+        &quot;creator&quot;: &quot;lora&quot;,
+        &quot;id&quot;: &quot;597f5ce31b9f601e85d9ae86&quot;
+    }
+]
+                       </code>
+                        </pre>
+                                </p>
+                            </div>
+                        </div>
+                        <hr/>
+                        <div id="create-client" class="row">
+                            <div class="col-lg-12 col-md-12 col-sm-12">
+                                <h3 class="sub-title">POST api/client</h3>
+                            </div>
+                            <div class="col-lg-12 col-md-12 col-sm-12">
+                                <h4 class="sub-title">
+                                    Description
+                                </h4>
+                                <p class="text-body">
+                                    This endpoint will create a new Client. This endpoint is only accessibly by WAYS Phone staff
+                                </p>
+                            </div>
+                            <div class="col-lg-12 col-md-12 col-sm-12">
+                                <h4 class="sub-title">
+                                    Parameters
+                                </h4>
+                                <p class="text-body">
+                                    <strong>Name: </strong>the name of the client to be created.
+                                </p>
+                            </div>
+                            <div class="col-lg-12 col-md-12 col-sm-12">
+                                <h4 class="sub-title">
+                                    Example JSON Body
+                                </h4>
+                                <p class="text-body">
+                                    <pre>
+                        <code>
+{
+    “name” : ”ICV”
+}
+                       </code>
+                        </pre>
+                                </p>
+                            </div>
+                            <div class="col-lg-12 col-md-12 col-sm-12">
+                                <h4 class="sub-title">
+                                    Response
+                                </h4>
+                                <p class="text-body">
+                                    <pre>
+                        <code>
+{
+    "path": "ICV",
+    "name": "ICV",
+    "creator": "miles",
+    "id": "59800b3982dd6b67344df1b0"
+}
+                       </code>
+                        </pre>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </section>
+
+        <section class="intro-section">
+            <div class="container">
+                <div class="col-lg-10 mx-auto col-lg-offset-1">
+                    <div class="row">
+                        <div class="col-lg-12 col-md-12 col-sm-12">
+                            <h2 class="wide">Campaigns </h2>
+                        </div>
+                    </div>
+                    <hr/>
+                    <div id="get-campaigns" class="row">
+                        <div class="col-lg-12 col-md-12 col-sm-12">
+                            <h3 class="sub-title">GET api/clients/:client</h3>
+                        </div>
+                        <div class="col-lg-12 col-md-12 col-sm-12">
+                            <h4 class="sub-title">
+                                Description
+                            </h4>
+                            <p class="text-body">
+                                This endpoint will return a list of the campaigns associated with that client. Note that <strong>:client</strong>                                must be replace by the specific client path. The path for a client is the same as the client
+                                name except spaces are replaced by underscores. E.g. Fred Hollows -> Fred_Hollows
+                            </p>
+                        </div>
+
+                        <div class="col-lg-12 col-md-12 col-sm-12">
+                            <h4 class="sub-title">
+                                Response
+                            </h4>
+                            <p class="text-body">
+                                <pre>
+                        <code>
+[
+    {
+        "path": "Lead_Conversion",
+        "name": "Lead Conversion",
+        "client": "597f583975d2821864c13f26",
+        "creator": "miles",
+        "id": "597f586475d2821864c13f28"
+    },
+    {
+        "path": "Supporter_Conversion",
+        "name": "Supporter Conversion",
+        "client": "597f583975d2821864c13f26",
+        "creator": "miles",
+        "id": "597f58f5a3be5e19bb1b2361"
+    }
+]
+                       </code>
+                        </pre>
+                            </p>
+                        </div>
+                    </div>
+
+                    <hr/>
+                    <div id="create-campaign" class="row">
+                        <div class="col-lg-12 col-md-12 col-sm-12">
+                            <h3 class="sub-title">POST api/clients/:client</h3>
+                        </div>
+                        <div class="col-lg-12 col-md-12 col-sm-12">
+                            <h4 class="sub-title">
+                                Description
+                            </h4>
+                            <p class="text-body">
+                                This endpoint is used to add a campaign to a specific client. The <strong>:client</strong>                                section of the route must be replaced by a client’s path.
+                            </p>
+                        </div>
+                        <div class="col-lg-12 col-md-12 col-sm-12">
+                            <h4 class="sub-title">
+                                Parameters
+                            </h4>
+                            <p class="text-body">
+                                <strong>Name: </strong>The name of the campaign to be created.
+                            </p>
+                        </div>
+                        <div class="col-lg-12 col-md-12 col-sm-12">
+                            <h4 class="sub-title">
+                                Example JSON Body
+                            </h4>
+                            <p class="text-body">
+                                <pre>
+                        <code>
+{
+    "name":"Long Lapsed Reactivation"
+}
+                    </code>
+                        </pre>
+                            </p>
+                        </div>
+                        <div class="col-lg-12 col-md-12 col-sm-12">
+                            <h4 class="sub-title">
+                                Response
+                            </h4>
+                            <p class="text-body">
+                                <pre>
+                        <code>
+{
+    "path": "Long_Lapsed_Reactivation",
+    "name": "Long Lapsed Reactivation",
+    "client": {
+        "path": "ICV",
+        "name": "ICV",
+        "creator": "miles",
+        "id": "59800b3982dd6b67344df1b0"
+    },
+    "creator": "miles",
+    "id": "59800c3282dd6b67344df1b2"
+}
+                       </code>
+                        </pre>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+        <section class="about-section">
+            <div class="container">
+                <div class="col-lg-10 mx-auto col-lg-offset-1">
+                    <div class="row">
+                        <div class="col-lg-12 col-md-12 col-sm-12">
+                            <h2 class="wide">Sources </h2>
+                        </div>
+                    </div>
+                    <hr/>
+                    <div id="get-sources" class="row">
+                        <div class="col-lg-12 col-md-12 col-sm-12">
+                            <h3 class="sub-title">GET api/clients/:client/:campaign</h3>
+                        </div>
+                        <div class="col-lg-12 col-md-12 col-sm-12">
+                            <h4 class="sub-title">
+                                Description
+                            </h4>
+                            <p class="text-body">
+                                This endpoint is used to retrieve a list of sources associated with the campaign
+                            </p>
+                        </div>
+                        <div class="col-lg-12 col-md-12 col-sm-12">
+                            <h4 class="sub-title">
+                                Response
+                            </h4>
+                            <p class="text-body">
+                                <pre>
+                        <code>
+[
+    {
+        "path": "egentic",
+        "updatedAt": "2017-08-23T03:09:44.748Z",
+        "createdAt": "2017-08-23T03:09:44.748Z",
+        "name": "egentic",
+        "client": "597f583975d2821864c13f26",
+        "campaign": "597f586475d2821864c13f28",
+        "creator": "miles",
+        "id": "599cf1f8bfc28914649d0c69"
+    },
+    {
+        "path": "offers_now",
+        "updatedAt": "2017-08-23T03:11:51.923Z",
+        "createdAt": "2017-08-23T03:11:51.923Z",
+        "name": "offers now",
+        "client": "597f583975d2821864c13f26",
+        "campaign": "597f586475d2821864c13f28",
+        "creator": "miles",
+        "id": "599cf277bfc28914649d0c6b"
+    }
+]
+                       </code>
+                        </pre>
+                            </p>
+                        </div>
+                    </div>
+                    <hr/>
+                    <div id="create-source" class="row">
+                        <div class="col-lg-12 col-md-12 col-sm-12">
+                            <h3 class="sub-title">POST api/clients/:client/:campaign/source</h3>
+                        </div>
+                        <div class="col-lg-12 col-md-12 col-sm-12">
+                            <h4 class="sub-title">
+                                Description
+                            </h4>
+                            <p class="text-body">
+                                This endpoint is used to create a source for the selected campaign.</p>
+                            <p class="text-body">
+                                E.g. sources pushed to /api/clients/MSF/Lead_Conversion would be associated with MSF Lead Conversion Records will be pushed
+                                to the route which contains the client, campaign and source (this will be discussed later
+                                in the document). In this way records will be automatically populated with the Client, Campaign
+                                and Source.
+                            </p>
+                        </div>
+                        <div class="col-lg-12 col-md-12 col-sm-12">
+                            <h4 class="sub-title">
+                                Parameters
+                            </h4>
+                            <p class="text-body">
+                                <strong>Name: </strong>the name of the source to be created.
+                            </p>
+                        </div>
+                        <div class="col-lg-12 col-md-12 col-sm-12">
+                            <h4 class="sub-title">
+                                Example JSON Body
+                            </h4>
+                            <p class="text-body">
+                                <pre>
+                        <code>
+{
+    “name” : eGentic
+}
+                       </code>
+                        </pre>
+                            </p>
+                        </div>
+                        <div class="col-lg-12 col-md-12 col-sm-12">
+                            <h4 class="sub-title">
+                                Response
+                            </h4>
+                            <p class="text-body">
+                                <pre>
+                        <code>
+{
+    "path": "egentic",
+    "updatedAt": "2017-08-23T03:09:44.748Z",
+    "createdAt": "2017-08-23T03:09:44.748Z",
+    "name": "egentic",
+    "client": "597f583975d2821864c13f26",
+    "campaign": "597f586475d2821864c13f28",
+    "creator": "miles",
+    "id": "599cf1f8bfc28914649d0c69"
+}
+                       </code>
+                        </pre>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="intro-section">
+            <div class="container">
+                <div class="col-lg-10 mx-auto col-lg-offset-1">
+                    <div class="row">
+                        <div class="col-lg-12 col-md-12 col-sm-12">
+                            <h2 class="wide">Records </h2>
+                        </div>
+                    </div>
+                    <hr/>
+                    <div id="get-records" class="row">
+                        <div class="col-lg-12 col-md-12 col-sm-12">
+                            <h3 class="sub-title">GET api/clients/:client/:campaign/records</h3>
+                        </div>
+                        <div class="col-lg-12 col-md-12 col-sm-12">
+                            <h4 class="sub-title">
+                                Description
+                            </h4>
+                            <p class="text-body">
+                                This API endpoint will return all records associated with the campaign. This endpoint is only accessibly by WAYS Phone staff
+                            </p>
+                        </div>
+                        <div class="col-lg-12 col-md-12 col-sm-12">
+                            <h4 class="sub-title">
+                                Response
+                            </h4>
+                            <p class="text-body">
+                                <pre>
+                        <code>
+[
+    {
+        "_id": "597f5963a3be5e19bb1b2362",
+        "phone2": "61246557554",
+        "phone1": "61498092179",
+        "updatedAt": "2017-07-31T16:22:59.909Z",
+        "createdAt": "2017-07-31T16:22:59.909Z",
+        "firstname": "Miles",
+        "lastname": "Johnson",
+        "postcode": "2040",
+        "title": "Mr",
+        "mobilephone": "498092179",
+        "homephone": "246557554",
+        "client": "MSF",
+        "campaign": "Lead Conversion",
+        "creator": "miles",
+        "isInvalid": false,
+        "__v": 0
+    },
+    {
+        "_id": "597f5a5cc4415e1b94a0f101",
+        "phone2": "61246557554",
+        "phone1": "6149892179",
+        "updatedAt": "2017-07-31T16:27:08.507Z",
+        "createdAt": "2017-07-31T16:27:08.507Z",
+        "firstname": "Jeremy",
+        "lastname": "Jemiah",
+        "postcode": "2121",
+        "title": "Mr",
+        "mobilephone": "49892179",
+        "homephone": "246557554",
+        "client": "MSF",
+        "campaign": "Lead Conversion",
+        "creator": "miles",
+        "isInvalid": true,
+        "__v": 0
+    }
+]
+                       </code>
+                        </pre>
+                            </p>
+                        </div>
+                    </div>
+                    <div id="search-records" class="row">
+                        <div class="col-lg-12 col-md-12 col-sm-12">
+                            <h3 class="sub-title">POST api/clients/:client/:campaign/search</h3>
+                        </div>
+                        <div class="col-lg-12 col-md-12 col-sm-12">
+                            <h4 class="sub-title">
+                                Description
+                            </h4>
+                            <p class="text-body">
+                                This API endpoint will return all records that match the provided query. This route is only accessibly by WAYS Phone staff.
+                            </p>
+
+                        </div>
+                        <div class="col-lg-12 col-md-12 col-sm-12">
+                            <h4 class="sub-title">
+                                Parameters
+                            </h4>
+                            <p class="text-body">
+                                Any record field can be queried. Searching for { “isDuplicate”: true } Will return all duplicate records associated with
+                                the campaign
+                            </p>
+                        </div>
+                        <div class="col-lg-12 col-md-12 col-sm-12">
+                            <h4 class="sub-title">
+                                Example JSON Body
+                            </h4>
+                            <p class="text-body">
+                                <pre>
+                        <code>
+                                        {
+                                            "creator":"miles"
+                                        }
+                       </code>
+                        </pre>
+                            </p>
+                        </div>
+                        <div class="col-lg-12 col-md-12 col-sm-12">
+                            <h4 class="sub-title">
+                                Response
+                            </h4>
+                            <p class="text-body">
+                                <pre>
+                        <code>
+[
+    {
+        "_id": "597f5963a3be5e19bb1b2362",
+        "phone2": "61246557554",
+        "phone1": "61498092179",
+        "updatedAt": "2017-07-31T16:22:59.909Z",
+        "createdAt": "2017-07-31T16:22:59.909Z",
+        "firstname": "Miles",
+        "lastname": "Johnson",
+        "postcode": "2040",
+        "title": "Mr",
+        "mobilephone": "498092179",
+        "homephone": "246557554",
+        "client": "MSF",
+        "campaign": "Lead Conversion",
+        "creator": "miles",
+        "isInvalid": false,
+        "__v": 0
+    },
+    {
+        "_id": "597f5a5cc4415e1b94a0f101",
+        "phone2": "61246557554",
+        "phone1": "6149892179",
+        "updatedAt": "2017-07-31T16:27:08.507Z",
+        "createdAt": "2017-07-31T16:27:08.507Z",
+        "firstname": "Jeremy",
+        "lastname": "Jemiah",
+        "postcode": "2121",
+        "title": "Mr",
+        "mobilephone": "49892179",
+        "homephone": "246557554",
+        "client": "MSF",
+        "campaign": "Lead Conversion",
+        "creator": "miles",
+        "isInvalid": true,
+        "__v": 0
+    }
+]
+                       </code>
+                        </pre>
+                            </p>
+                        </div>
+                    </div>
+                    <hr/>
+                    <div id="push-record" class="row">
+                        <div class="col-lg-12 col-md-12 col-sm-12">
+                            <h3 class="sub-title">POST api/clients/:client/:campaign</h3>
+                        </div>
+                        <div class="col-lg-12 col-md-12 col-sm-12">
+                            <h4 class="sub-title">
+                                Description
+                            </h4>
+                            <p class="text-body">
+                                This endpoint is used to push individual records to the campaign selected in the URL. e.g. records pushed to /api/clients/MSF/Lead_Conversion/egentic
+                                would be associated with MSF Lead Conversion and egentic. i.e. records will have their source
+                                field automatically populated from the ‘:source’ parameter in the URL.
+                            </p>
+                        </div>
+                        <div class="col-lg-12 col-md-12 col-sm-12">
+                            <h4 class="sub-title">
+                                Parameters
+                            </h4>
+                            <p class="text-body">
+                                At an absolute minimum, records must contain <strong>EITHER:</strong>
+                            </p>
+                            <p class="text-body">
+                                <strong>mobilephone: </strong>mobile phone number.
+                            </p>
+                            <p class="text-body">
+                                <strong>homephone: </strong>a home phone number.
+                            </p>
+                            <p class="text-body">
+                                AND
+                            </p>
+                            <p class="text-body">
+                                <strong>source: </strong> the agreed upon source.
+                            </p>
+                            <p class="text-body">
+                                Without these fields, the record will be marked as invalid. Fields where validation and formatting will apply are the following
+                                <ul>
+                                    <li>custkey</li>
+                                    <li>title</li>
+                                    <li>firstname</li>
+                                    <li>lastname</li>
+                                    <li>gender</li>
+                                    <li>address1</li>
+                                    <li>address2</li>
+                                    <li>suburb</li>
+                                    <li>state</li>
+                                    <li>postcode</li>
+                                    <li>email</li>
+                                    <li>source</li>
+                                    <li>sitelabel</li>
+                                </ul>
+                            </p>
+                            <p class="text-body">
+                                Records can be uploaded with fields that fall outside of those mentioned. However, no validation or formatting will apply,
+                                and most importantly only the above fields will be used by WAYS phone. As such it is <strong>strongly</strong>                                suggested that these core fields are used. If the Mobile Phone, Home Phone or Email Address
+                                matches another record in the same campaign within the last 6 months, the record will be
+                                marked as duplicate. The response will be a field indicating the record ID as set in the
+                                database and whether the record was considered valid or duplicate.
+                            </p>
+                            <p class="text-body">
+                                the source set on the records must be exactly the same as an existing source for that specific campaign. For example, if
+                                the source is <strong>egentic</strong> a source set with
+                                e
+                                <strong>G</strong>entic will fail to push.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        </div>
+
+</html>
+<script src="js/jquery.js"></script>
+
+<script src="js/bootstrap.js"></script>
+<script src="js/jquery.easing.min.js"></script>
+
+
+
+<script src="js/scrolling-nav.js"></script>
+<script>
+  $(document).ready(function() {
+
+    function getToken() {
+      return window.sessionStorage['token'];
+    };
+
+    function isLoggedIn()  {
+      var token = getToken();
+      var payload;
+
+      if (token) {
+        try {
+          payload = token.split('.')[1];
+          payload = window.atob(payload);
+          payload = JSON.parse(payload);
+
+          var hasExpired = payload.exp < Date.now() / 1000;
+
+          if (hasExpired) logout();
+          return !hasExpired;
+        } catch (err) {
+          return false;
+        }
+      } else {
+        return false;
+      }
+  }
+
+  if (!isLoggedIn()) {
+    window.location.replace("https://www.ways-phone.com/#/login");
+  }
+  });
+</script>

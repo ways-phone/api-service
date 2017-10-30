@@ -1,0 +1,46 @@
+<app-sidebar></app-sidebar>
+
+
+<div class="container">
+  <div *ngIf="!confirmHide" class="row">
+    <button (click)="goBack()" class="btn-back"><i class="glyphicon glyphicon-chevron-left"></i></button>
+    <button *ngIf="isHidden === false" (click)="showHidden()" class="btn-show-hidden"><i class="glyphicon glyphicon-eye-open"></i></button>
+    <button *ngIf="isHidden !== false" (click)="showHidden()" class="btn-show-hidden"><i class="glyphicon glyphicon-eye-close"></i></button>
+    <!-- <div style="min-height:100vh; margin-top:1px;" class="col-lg-11 col-lg-offset-1 main-content"> -->
+
+    <div class="col-md-12 col-md-offset-2">
+      <div (click)="goToCreateCampaign()" class="col-md-3 tile">
+        <h1><a class="create"><i class="fa fa-plus"></i></a></h1>
+      </div>
+      <div   *ngFor="let campaign of campaigns" >
+      <div  *ngIf="!campaign.isHidden" class="col-md-3 tile">
+        <h1><a href="/#/clients/{{client}}/{{campaign.path}}" >{{campaign.name}}</a></h1>
+        <button class="btn-remove" (click)="showConfirmHide(campaign)"><i class="glyphicon glyphicon-remove"></i></button>
+      </div>
+      <div  *ngIf="campaign.isHidden" class="col-md-3 tile-hidden">
+          <h1><a href="/#/clients/{{client}}/{{campaign.path}}" >{{campaign.name}}</a></h1>
+          <button id="hidden" class="btn-remove" (click)="showConfirmHide(campaign)"><i class="glyphicon glyphicon-ok"></i></button>
+        </div>
+    </div>
+    </div>
+    </div>
+    <div *ngIf="confirmHide" class="row">
+        <div class="col-md-10 col-md-offset-2 confirm-hide">
+          <form>
+            <div *ngIf="!selectedCampaign.isHidden" class="form-group">
+              <p>Are you sure you want to <strong>hide</strong> {{selectedCampaign.client.name}} {{selectedCampaign.name}}?</p>
+            </div>
+            <div *ngIf="selectedCampaign.isHidden" class="form-group">
+                <p>Are you sure you want to <strong>unhide</strong> {{selectedCampaign.client.name}}  {{selectedCampaign.name}}?</p>
+              </div>
+            <div class="form-group">
+              <div class="input-btn">
+                <button (click)="hide(selectedCampaign.path)" class="btn"><i class="glyphicon glyphicon-ok"></i></button>
+                <button (click)="cancelHide()" class="btn"><i class="glyphicon glyphicon-remove"></i></button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+
+</div>

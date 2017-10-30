@@ -1,0 +1,21 @@
+<app-sidebar></app-sidebar>
+
+
+<div class="container">
+  <div class="row">
+    <button (click)="goBack()" class="btn-back"><i class="glyphicon glyphicon-chevron-left"></i></button>
+    <!-- <div style="min-height:100vh; margin-top:1px;" class="col-lg-11 col-lg-offset-1 main-content"> -->
+    <div class="col-md-12 col-md-offset-2">
+      <div (click)="goToCreateSource()" class="col-md-3 tile">
+        <h1>
+          <a class="create"><i class="fa fa-plus"></i></a>
+        </h1>
+      </div>
+      <div *ngFor="let source of sources" class="col-md-3 tile">
+        <h1><a>{{source.name}}</a></h1>
+        <button class="btn-remove"><i class="glyphicon glyphicon-remove"></i></button>
+      </div>
+    </div>
+    <!-- </div> -->
+  </div>
+</div>

@@ -1,0 +1,48 @@
+<!-- <app-header></app-header> -->
+<app-sidebar></app-sidebar>
+
+<div class="container">
+  <div *ngIf="!confirmHide" class="row">
+    <button *ngIf="isHidden === false" (click)="showHidden()" class="btn-show-hidden"><i class="glyphicon glyphicon-eye-open"></i></button>
+    <button *ngIf="isHidden !== false" (click)="showHidden()" class="btn-show-hidden"><i class="glyphicon glyphicon-eye-close"></i></button>
+    <!-- <div style="min-height:100vh; margin-top:1px;" class="col-lg-11 col-lg-offset-1 main-content"> -->
+    <div class="col-md-12 col-md-offset-2">
+      <div (click)="goToCreateClient()" class="col-md-3 tile">
+        <h1><a class="create"><i class="fa fa-plus"></i></a></h1>
+      </div>
+      <div *ngFor="let client of clients">
+        <div *ngIf="!client.isHidden" class="col-md-3 tile">
+          <h1><a href="/#/clients/{{client.path}}">{{client.name}}</a></h1>
+          <button class="btn-remove" (click)="showConfirmHide(client)"><i class="glyphicon glyphicon-remove"></i></button>
+        </div>
+        <div *ngIf="client.isHidden" class="col-md-3 tile-hidden">
+          <h1><a href="/#/clients/{{client.path}}">{{client.name}}</a></h1>
+          <button id="hidden" class="btn-remove" (click)="showConfirmHide(client)"><i class="glyphicon glyphicon-ok"></i></button>
+        </div>
+      </div>
+    </div>
+    <!-- </div> -->
+  </div>
+  <div *ngIf="confirmHide" class="row">
+    <div class="col-md-10 col-md-offset-2 confirm-hide">
+      <form>
+        <div *ngIf="!selectedClient.isHidden" class="form-group">
+          <p>Are you sure you want to <strong>hide</strong> {{selectedClient.name}}?</p>
+        </div>
+        <div *ngIf="selectedClient.isHidden" class="form-group">
+          <p>Are you sure you want to <strong>unhide</strong> {{selectedClient.name}}?</p>
+        </div>
+        <div class="form-group">
+          <div class="input-btn">
+            <button (click)="hide(selectedClient.path)" class="btn"><i class="glyphicon glyphicon-ok"></i></button>
+            <button (click)="cancelHide()" class="btn"><i class="glyphicon glyphicon-remove"></i></button>
+          </div>
+
+        </div>
+        <div *ngIf="errors" class="form-group has-error">
+          <span class="help-block">{{errors}}</span>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,11 @@
+.header {
+  margin-bottom: 40px;
+  background: rgba(0, 0, 0, 0.4);
+}
+.navbar-brand {
+  color: white !important;
+}
+.link {
+  color: white !important;
+  cursor: grab;
+}

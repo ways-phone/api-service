@@ -1,0 +1,24 @@
+.wide {
+  letter-spacing: 4px !important;
+  text-transform: uppercase;
+  color: #959595;
+  text-align: center;
+}
+
+.sub-title {
+  letter-spacing: 4px !important;
+  margin-bottom: 20px;
+  color: #9b5555;
+}
+.header {
+  margin-left: 65% !important;
+}
+.text-body {
+  color: #474242;
+  font-size: 17px;
+}
+@media (min-width: 1350px) {
+  .main-body {
+    margin-left: 218px;
+  }
+}

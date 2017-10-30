@@ -1,0 +1,17 @@
+/* You can add global styles to this file, and also import other style files */
+.main {
+  background: url('./assets/img/bg.jpg') no-repeat scroll;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+.has-error {
+  font-size: 20px;
+  color: #ff9797 !important;
+}
+
+.has-success {
+  font-size: 20px;
+  color: #9bcc5f !important;
+}
